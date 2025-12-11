@@ -1,5 +1,6 @@
 @page
 @model CorazonesModel
+@model MiProyecto.Pages.CorazonesModel
 @{
     Layout = null;
 }
@@ -59,7 +60,7 @@
     @* Genera corazones desde C# *@
     @foreach (var heart in Model.Corazones)
     {
-    <div class="corazon" style="top:@heart.Top%; left:@heart.Left%;">
+    <div class="corazon" style="top:@($"{heart.Top}%"); left:@($"{heart.Left}%");">
         ❤️
     </div>
     }
