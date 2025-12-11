@@ -1,72 +1,68 @@
 @page
-@model ProductoModel
+@model CorazonesModel
 @{
-    ViewData["Title"] = "Tienda";
+    Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Consoladores Eléctricos</title>
+    <meta charset="UTF-8" />
+    <title>Te quiero</title>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
             margin: 0;
-            padding: 20px;
+            overflow: hidden;
+            background: #ffe6f2;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        .producto {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 400px;
-            margin: auto;
+        .mensaje {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-weight: bold;
+            color: #d6006e;
+            text-shadow: 2px 2px 5px white;
+            z-index: 10;
             text-align: center;
         }
 
-        button {
-            margin-top: 15px;
-            padding: 12px 20px;
-            background-color: #ff3b84;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
+        .corazon {
+            position: absolute;
+            font-size: 40px;
+            color: red;
+            animation: mover 4s ease-in-out infinite alternate;
+            opacity: 0.6;
         }
 
-            button:hover {
-                background-color: #e73575;
+        @keyframes mover {
+            from {
+                transform: translateX(-50px);
             }
+            to {
+                transform: translateX(50px);
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>@Model.Nombre</h1>
-        <p>Los mejores productos al mejor precio</p>
-    </header>
-
-    <div class="producto">
-        <h2>Consolador Eléctrico Premium</h2>
-        <p>Potente, silencioso y recargable.</p>
-        <p>Precio: S/ @Model.Precio</p>
-        <a href="/Compra" class="btn">Comprar</a>
-        <button onclick="window.location.href='compra'">Comprar</button>
+    <div class="mensaje">
+        Te quiero <br> Dara Alexa Reynoso Pfuño ❤️
     </div>
+
+    @* Genera corazones desde C# *@
+    @foreach (var heart in Model.Corazones)
+    {
+    <div class="corazon" style="top:@heart.Top%; left:@heart.Left%;">
+        ❤️
+    </div>
+    }
 
 </body>
 </html>

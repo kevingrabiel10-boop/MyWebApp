@@ -1,13 +1,29 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
-public class ProductoModel : PageModel
+public class CorazonesModel : PageModel
 {
-    public string Nombre { get; set; }
-    public decimal Precio { get; set; }
+    public List<Corazon> Corazones { get; set; }
 
     public void OnGet()
     {
-        Nombre = "Consolador Turbo 3000";
-        Precio = 79.90m;
+        Corazones = new List<Corazon>();
+
+        // Genera 30 corazones aleatorios
+        var random = new Random();
+        for (int i = 0; i < 30; i++)
+        {
+            Corazones.Add(new Corazon
+            {
+                Top = random.Next(0, 100),
+                Left = random.Next(0, 100)
+            });
+        }
     }
+}
+
+public class Corazon
+{
+    public int Top { get; set; }
+    public int Left { get; set; }
 }
