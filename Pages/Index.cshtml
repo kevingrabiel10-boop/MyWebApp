@@ -1,5 +1,5 @@
 @page
-@model IndexModel
+@model ProductoModel
 @{
     ViewData["Title"] = "Tienda";
 }
@@ -56,15 +56,15 @@
 <body>
 
     <header>
-        <h1>Tienda de Consoladores Eléctricos</h1>
+        <h1>@Model.Nombre</h1>
         <p>Los mejores productos al mejor precio</p>
     </header>
 
     <div class="producto">
         <h2>Consolador Eléctrico Premium</h2>
         <p>Potente, silencioso y recargable.</p>
-        <p><strong>Precio:</strong> S/ 129.00</p>
-
+        <p>Precio: S/ @Model.Precio</p>
+        <a href="/Compra" class="btn">Comprar</a>
         <button onclick="window.location.href='compra'">Comprar</button>
     </div>
 
